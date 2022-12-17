@@ -1,0 +1,28 @@
+﻿@model Laba3.Dal.Entities.Airline
+@{ ViewBag.Title = "Please add new airline to service list!"; }
+
+<script>function uuidv4() {
+        return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+    }
+    function getRandom() {
+        document.getElementById('randomid').value = uuidv4();
+    }</script>
+
+<form asp-action="CreateAirline" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Airline_Id" class="control-label">Click on input to generate passenger id</label>
+        <input type="text" asp-for="Airline_Id" class="form-control" id="randomid" readonly onclick="getRandom()" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Company_Name" class="control-label">Company name</label>
+        <select asp-for="Company_Name" class="form-control" required>
+            <option value="Sky Up">Sky Up</option>
+            <option value="Pegasus">Pegasus</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-outline-primary" />
+    </div>
+</form>

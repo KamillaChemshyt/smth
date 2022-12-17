@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HM//Sshocyul1ba8i3lqwDIq7NaxVrngymfmstDWGD/06Io4S0C8nhnKsREwgg1B6BP1xkm5aekZQ0UkzVxudA==",
+  "dgSpecHash": "veIe3NvAuuYIlgK4JDExocFDmIYqVols8UG5PI16U0ELLRuChxxljb4UgSK5bNTjaKLN8bMwuQ5zfl1f3pSyfA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kamil\\source\\repos\\Laba3\\Laba3\\Laba3.csproj",
+  "projectFilePath": "C:\\Users\\kamil\\Downloads\\smth\\smth\\Laba3\\Laba3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kamil\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kamil\\.nuget\\packages\\microsoft.aspnet.webapi.client\\4.0.20710\\microsoft.aspnet.webapi.client.4.0.20710.nupkg.sha512",

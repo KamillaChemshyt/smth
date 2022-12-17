@@ -53,6 +53,13 @@ namespace Laba3.Models
         {
             return await Set.ToListAsync();
         }
+
+        public async Task<List<string>> GetAllPassengerIds()
+        {
+            return await Set.Select(x => x.Id).ToListAsync();
+        }
+
+
     }
 
 

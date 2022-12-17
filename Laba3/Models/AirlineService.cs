@@ -44,5 +44,16 @@ namespace Laba3.Models
 
             await Context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Airline>> GetAllAsync()
+        {
+            return await Set.ToListAsync();
+        }
+
+        public async Task<List<string>> GetAllAirlineIds()
+        {
+            return await Set.Select(x => x.Airline_Id).ToListAsync();
+        }
+
     }
 }

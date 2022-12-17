@@ -1,0 +1,45 @@
+﻿@model Laba3.Dal.Entities.Ticket
+@{ ViewBag.Title = "Please add new ticket to service list!"; }
+
+<script>function uuidv4() {
+        return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+    }
+    function getRandom() {
+        document.getElementById('randomid').value = uuidv4();
+
+
+    }</script>
+
+<form asp-action="CreateTicket" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Ticket_Id" class="control-label">Click on input to generate ticket id</label>
+        <input type="text" asp-for="Ticket_Id" class="form-control" id="randomid" readonly onclick="getRandom()" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Passenger_Id" class="control-label">Passenger Id</label>
+        <select asp-for="Passenger_Id" class="form-control" required>
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Airline_Id" class="control-label">Airline Id</label>
+        <select asp-for="Airline_Id" class="form-control" required>
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cost" class="control-label">Cost</label>
+        <input type="number" asp-for="Cost" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Flight_Date" class="control-label">Flight Date</label>
+        <input type="text" asp-for="Flight_Date" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-outline-primary" />
+    </div>
+</form>

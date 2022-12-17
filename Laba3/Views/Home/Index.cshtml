@@ -3,7 +3,16 @@
 }
 
 @model IEnumerable<Laba3.Dal.Entities.Passenger>
-<a asp-action="PassengerAddView">Add new passenger to service</a>
+<style>
+    table, th, td {
+        border: 2px solid #f0efef;
+        text-align: center;
+    }
+</style>
+
+    <h1>Passengers</h1>
+    <h6><a asp-action="PassengerAddView"> Add new passenger to service </a></h6>
+
 <table class="table">
     <tr><td>Id</td><td>First Name</td><td>Last Name</td><td>Passort Number</td></tr>
     @foreach (var item in Model)
@@ -13,8 +22,7 @@
             <td>@item.First_Name</td>
             <td>@item.Last_Name</td>
             <td>@item.Passport_Number</td>
-            <td><a class="btn" asp-action="PassengerEditView" asp-controller="Home" asp-route-id="@item.Id" >Update</a></td>
-            <td><a type="submit" class="btn" asp-action="Delete" asp-controller="Home" method="post" asp-route-id="@item.Id">Delete</a></td>
+            <td><a class="btn btn-secondary" asp-action="PassengerEditView" asp-route-id="@item.Id" >Edit</a></td>
         </tr>
     }
 </table>

@@ -1,0 +1,22 @@
+﻿@{ ViewData["Title"] = "Airline Page"; }
+
+@model IEnumerable<Laba3.Dal.Entities.Airline>
+    <style>
+        table, th, td {
+            border: 2px solid #f0efef;
+            text-align: center;
+        }
+    </style>
+    <h1>Airlines</h1>
+    <h6><a asp-action="AirlineAddView">Add new airlines</a></h6>
+    <table class="table">
+        <tr><td>Id</td><td>Company Name</td></tr>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>@item.Airline_Id</td>
+    <td>@item.Company_Name</td>
+    <td><a class="btn btn-secondary" asp-action="AirlineEditView" asp-route-id="@item.Airline_Id">Edit</a></td>
+</tr>
+}
+    </table>

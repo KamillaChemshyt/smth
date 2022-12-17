@@ -1267,11 +1267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kamil\\source\\repos\\Laba3\\Laba3\\Laba3.csproj",
+      "projectUniqueName": "C:\\Users\\kamil\\Downloads\\smth\\smth\\Laba3\\Laba3.csproj",
       "projectName": "Laba3",
-      "projectPath": "C:\\Users\\kamil\\source\\repos\\Laba3\\Laba3\\Laba3.csproj",
+      "projectPath": "C:\\Users\\kamil\\Downloads\\smth\\smth\\Laba3\\Laba3.csproj",
       "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kamil\\source\\repos\\Laba3\\Laba3\\obj\\",
+      "outputPath": "C:\\Users\\kamil\\Downloads\\smth\\smth\\Laba3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

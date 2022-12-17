@@ -3,22 +3,10 @@
     ViewBag.Title = "List edit";
 }
 
-@*<script>
-
-    function uuidv4() {
-        return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-        );
-    }
-    function getRandom() {
-        document.getElementById('randomid').value = uuidv4();
-    }
-</script>*@
-
-<form asp-action="edit" asp-controller="home" asp-route-id="@Model.Id">
+<form asp-action="edit" asp-controller="home">
     <div class="form-group">
-        <label asp-for="Id" class="control-label">Click on input to generate passenger id</label>
-        <input type="text" asp-for="Id" class="form-control" id="randomid" readonly />
+        <label asp-for="Id" class="control-label">Id</label>
+        <input type="text" asp-for="Id" class="form-control" id="randomid" readonly/>
     </div>
     <div class="form-group">
         <label asp-for="First_Name" class="control-label">Passenger Firstname</label>
@@ -33,6 +21,10 @@
         <input type="text" asp-for="Passport_Number" class="form-control" required/>
     </div>
     <div class="form-group">
-        <input type="submit" value="Сохранить" class="btn btn-default" />
+        <input type="submit" value="Сохранить" class="btn btn-outline-primary"/>
+    </div>
+    <div>
+        <a class="btn btn-danger" asp-action="DeletePassenger" asp-route-id="@Model.Id">Delete Permanently</a>
     </div>
 </form>
+

@@ -1,0 +1,26 @@
+﻿@{ ViewData["Title"] = "Ticket Page"; }
+
+@model IEnumerable<Laba3.Dal.Entities.Ticket>
+<style>
+    table, th, td {
+        border: 2px solid #f0efef;
+        text-align: center;
+    }
+</style>
+
+<h1>Tickets</h1>
+<h6><a asp-action="TicketAddView"> Add new ticket to service </a></h6>
+
+<table class="table">
+    <tr><td>Id</td><td>Passenger Id</td><td>Airline Id</td><td>Cost</td><td>Flight Date</td></tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Ticket_Id</td>
+    <td>@item.Passenger_Id</td>
+    <td>@item.Airline_Id</td>
+    <td>@item.Cost</td>
+    <td>@item.Flight_Date</td>
+    <td><a class="btn btn-secondary" asp-action="TicketEditView" asp-route-id="@item.Ticket_Id">Edit</a></td>
+</tr>}
+</table>

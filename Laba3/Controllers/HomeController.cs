@@ -38,14 +38,34 @@ namespace Laba3.Controllers
             return View(await _passengerService.GetAllAsync());
         }
 
+        public async Task<IActionResult> Ticket()
+        {
+            return View(await _ticketService.GetAllAsync());
+        }
+
+
+        public async Task<IActionResult> Airline()
+        {
+            return View(await _airlineService.GetAllAsync());
+        }
+
         public IActionResult PassengerAddView()
         {
             return View();
         }
 
-        public IActionResult PassengerEditView()
+        public IActionResult AirlineAddView()
         {
             return View();
+        }
+
+        public async Task<IActionResult> TicketAddView()
+        {
+            return View(new TicketAdd
+            {
+                PassengerIds = await _passengerService.GetAllPassengerIds(),
+                AirlineIds = await _airlineService.GetAllAirlineIds()
+            });
         }
 
         [HttpPost]
@@ -55,51 +75,157 @@ namespace Laba3.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost, ActionName("Delete")]
-        //public async Task<IActionResult> Delete(string accountKey)
-        //{
-        //    await _passengerService.RemoveAsync(accountKey);
-        //    return RedirectToAction("Index");
-        //}
 
+        public async Task<IActionResult> CreateAirline(Airline airline)
+        {
+            await _airlineService.AddAirlineAsync(airline);
+            return RedirectToAction("Airline");
+        }
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> CreateTicket(Ticket ticket)
+        {
+            await _ticketService.AddTicketAsync(ticket);
+            return RedirectToAction("Ticket");
+        }
+
+        public IActionResult No()
+        {
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DeletePassenger(string id)
         {
             if (id != null)
             {
                 Passenger passenger = await _passengerService.GetPassengerByIdAsync(id);
                 if (passenger != null)
                 {
-                    await _passengerService.RemoveAsync(passenger);
-                    return RedirectToAction("Index");
+                    return View(passenger);
+                }
+            }
+            return NotFound();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Delete(Passenger passenger)
+        {
+            await _passengerService.RemoveAsync(passenger);
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult No2()
+        {
+            return RedirectToAction("Airline");
+        }
+        public async Task<IActionResult> DeleteAirline(string id)
+        {
+            if (id != null)
+            {
+                Airline airline = await _airlineService.GetAirlineByIdAsync(id);
+                if (airline != null)
+                {
+                    return View(airline);
                 }
             }
             return NotFound();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteSomeAirline(Airline airline)
+        {
+            await _airlineService.RemoveAsync(airline);
+            return RedirectToAction("Airline");
+        }
 
 
-        public async Task<IActionResult> Edit(string id)
+
+        public IActionResult No3()
+        {
+            return RedirectToAction("Ticket");
+        }
+        public async Task<IActionResult> DeleteTicket(string id)
         {
             if (id != null)
             {
-                Passenger passenger = await _passengerService.GetPassengerByIdAsync(id); ;
-                if (passenger != null) 
-                    return View(passenger);
+                Ticket ticket = await _ticketService.GetTicketByIdAsync(id);
+                if (ticket != null)
+                {
+                    return View(ticket);
+                }
             }
             return NotFound();
         }
+
         [HttpPost]
+        public async Task<IActionResult> DeleteSomeTicket(Ticket ticket)
+        {
+            await _ticketService.RemoveAsync(ticket);
+            return RedirectToAction("Ticket");
+        }
+
+
+
+        public async Task<IActionResult> PassengerEditView(string id)
+            {
+                if (id != null)
+                {
+                    var passenger = await _passengerService.GetPassengerByIdAsync(id); ;
+                    if (passenger != null)
+                        return View(passenger);
+                }
+                return NotFound();
+            }
+        
+
+
+        [HttpPost( "edit")]
         public async Task<IActionResult> Edit(Passenger passenger)
         {
             await _passengerService.UpdateAsync(passenger);
             return RedirectToAction("Index");
         }
-        public IActionResult Privacy()
+
+
+        public async Task<IActionResult> AirlineEditView(string id)
         {
-            return View();
+            if (id != null)
+            {
+                var airline = await _airlineService.GetAirlineByIdAsync(id); ;
+                if (airline != null)
+                    return View(airline);
+            }
+            return NotFound();
         }
+
+        [HttpPost("EditSomeAirline")]
+        public async Task<IActionResult> EditSomeAirline(Airline airline)
+        {
+            await _airlineService.UpdateAsync(airline);
+            return RedirectToAction("Airline");
+        }
+
+
+
+        public async Task<IActionResult> TicketEditView(string id)
+        {
+            if (id != null)
+            {
+                var ticket = await _ticketService.GetTicketByIdAsync(id); ;
+                if (ticket != null)
+                    return View(ticket);
+            }
+            return NotFound();
+        }
+
+        [HttpPost("EditSomeTicket")]
+        public async Task<IActionResult> EditSomeTicket(Ticket ticket)
+        {
+            await _ticketService.UpdateAsync(ticket);
+            return RedirectToAction("Ticket");
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

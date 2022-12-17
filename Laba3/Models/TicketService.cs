@@ -45,5 +45,16 @@ namespace Laba3.Models
 
             await Context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Ticket>> GetAllAsync()
+        {
+            return await Set.ToListAsync();
+        }
+
+        public IEnumerable<Ticket> GetPassengerTicketsAsync(string id)
+        {
+            return Set.Where(x => x.Passenger_Id.Equals(id));
+        }
+
     }
 }

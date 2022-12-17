@@ -1,0 +1,22 @@
+﻿@model Laba3.Dal.Entities.Airline
+@{ ViewBag.Title = "List edit"; }
+
+<form asp-action="DeleteSomeAirline" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Airline_Id" class="control-label">Id</label>
+        <input type="text" asp-for="Airline_Id" class="form-control" id="randomid" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Company_Name" class="control-label">Company name</label>
+        <select asp-for="Company_Name" class="form-control" readonly>
+            <option value="Sky Up">Sky Up</option>
+            <option value="Pegasus">Pegasus</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Уes" class="btn btn-outline-success" />
+    </div>
+    <div>
+        <a class="btn btn-outline-danger" asp-action="no2">No</a>
+    </div>
+</form>
